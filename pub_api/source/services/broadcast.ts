@@ -8,14 +8,16 @@ const kafka = new Kafka({
 
 const producer = kafka.producer();
 
-export async function publish(msg: Post) {
+export async function publish(msg: Post, key: Number) {
   await producer.connect();
 
   console.log("........");
   console.log(msg);
 
-  await producer.send({
+  const response_ = await producer.send({
     topic: process.env.TOPIC,
-    messages: [{ value: msg.title }],
+    messages: [{ value: JSON.stringify(msg) }],
   });
+
+  console.log(response_);
 }

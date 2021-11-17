@@ -21,7 +21,7 @@ const consumer = new Consumer(
 );
 
 consumer.on('message', message => {
-  console.log(message);
+  console.log(JSON.parse(message.value));
 });
 
 consumer.on('error', err => {
