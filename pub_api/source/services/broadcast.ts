@@ -1,9 +1,13 @@
-const { Kafka } = require("kafkajs");
+import { Kafka } from "kafkajs";
 import { Post } from "../interfaces";
+
+const BROKER_HOST: string =  process.env.ENVIRONMENT === 'local'
+? process.env.INTERNAL_KAFKA_ADDR
+: process.env.EXTERNAL_KAFKA_ADDR;
 
 const kafka = new Kafka({
   clientId: "my-app",
-  brokers: [process.env.INTERNAL_KAFKA_ADDR]
+  brokers: [BROKER_HOST]
 });
 
 const producer = kafka.producer();
