@@ -28,6 +28,12 @@ docker-compose up --detach
 
 and to publish to ecosystem one can POST to Post.py from local computer 
 
+e.g.
+```bash
+cd ./pub_api
+python3 post.py green eggs 123
+```
+
 see the consumer collecting messages and printing to std out, use
 
 with `docker logs -f subscriber_container_id`
