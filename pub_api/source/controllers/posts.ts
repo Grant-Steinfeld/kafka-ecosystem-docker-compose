@@ -12,6 +12,7 @@ const addPost = async (req: Request, res: Response, next: NextFunction) => {
   let postInt: Post = {
     title: req.body.title,
     body: req.body.body,
+    messageType: req.body.messageType,
     id: id_,
     userId: 100
   };
