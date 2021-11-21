@@ -20,12 +20,12 @@ export async function publish(msg: Post, key: Number) {
   console.log("........");
   console.log(msg);
 
-  let msgDict: Object = {};
+  let msgDict: any = {};
   if(msg.messageType === "JSON"){
-    msgDict = { value: JSON.stringify(msg) }
+    msgDict = {  key: msg.id, value: JSON.stringify(msg) }
   } else {
     if(msg.messageType === "TEXT"){
-      msgDict = { value: msg }
+      msgDict = { key: msg.id, value: msg.body }
     }
     else
     {
